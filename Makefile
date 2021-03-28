@@ -1,5 +1,11 @@
+install: 
+      install-deps
+
 lint:
-	  npx eslint .
+      npx eslint .
+
+install-deps:
+	  npm ci
 
 test:
 	  npm test
@@ -7,5 +13,5 @@ test:
 install: 
 	  npm install
 
-build:
-	  npm run build
+test-coverage:
+	  npm test -- --coverage --coverageProvider=v8
