@@ -11,4 +11,3 @@ test:
 
 test-coverage:
 	  npm test -- --coverage --coverageProvider=v8
-	  cc-test-reporter after-build -r
