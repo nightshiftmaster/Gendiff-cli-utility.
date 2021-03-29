@@ -11,6 +11,11 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    'no-underscore-dangle': [2, { "allow": ["__filename", "__dirname"] }],
+    'no-console': 'off',
+    'no-underscore-dangle': [2, { allow: ['__filename', '__dirname'] }],
+    'import/extensions': ['error', 'ignorePackages', {
+      js: 'always',
+      mjs: 'always',
+    }],
   },
 };
