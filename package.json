@@ -9,7 +9,7 @@
     "transform": {}
   },
   "bin": {
-    "gendiff": "gendiff.js"
+    "gendiff": "bin/index.js"
   },
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/.bin/jest"

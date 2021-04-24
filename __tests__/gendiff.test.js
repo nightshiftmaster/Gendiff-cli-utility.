@@ -2,10 +2,11 @@ import {
   describe, it, expect,
 } from '@jest/globals';
 import { readFileSync } from 'fs';
+import yaml from 'js-yaml';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import gendiff from '../src/index.js';
-import { parseYml, parseJson } from '../src/parsers.js';
+import gendiff from '../src/gendiff.js';
+import stylish from '../src/stylish.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -13,33 +14,24 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 
 const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8');
 
-const flatJson1 = parseJson('file1.json');
-const flatJson2 = parseJson('file2.json');
-const flatYml1 = parseYml('file1.yml');
-const flatYml2 = parseYml('file2.yml');
+const json1 = JSON.parse(readFile('file1.json'));
+const json2 = JSON.parse(readFile('file2.json'));
+const yml1 = yaml.load(readFile('file1.yml'));
+const yml2 = yaml.load(readFile('file2.yml'));
 
 describe('genDiff', () => {
   it('empty data', () => {
     const expected = ['{', '}'].join('\n');
 
-    expect(gendiff({}, {})).toEqual(expected);
+    expect(stylish(gendiff({}, {}))).toEqual(expected);
   });
 
-  it('flat json', () => {
-    const expected = readFile('flat.txt');
-
-    expect(gendiff(flatJson1, flatJson2)).toEqual(expected);
+  it('nested json', () => {
+    const expected = readFile('nested.txt');
+    expect(stylish(gendiff(json1, json2))).toEqual(expected);
   });
-
-  it('flat yml', () => {
-    const expected = readFile('flat.txt');
-
-    expect(gendiff(flatYml1, flatYml2)).toEqual(expected);
-  });
-
-  it('json vs yml', () => {
-    const expected = readFile('flat.txt');
-
-    expect(gendiff(flatJson1, flatYml2)).toEqual(expected);
+  it('nested yml', () => {
+    const expected = readFile('nested.txt');
+    expect(stylish(gendiff(yml1, yml2))).toEqual(expected);
   });
 });
