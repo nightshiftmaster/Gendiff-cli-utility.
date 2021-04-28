@@ -15,9 +15,9 @@ const stringify = (value, depth) => {
   return ['{', ...lines, `${makeSpace(2, depth + 2)}}`].join('\n');
 };
 
-const stylish = (json) => {
+const makeStylishFormat = (data) => {
   const iter = (tree, depth) => {
-    const result = tree.flatMap((element) => {
+    const elements = tree.flatMap((element) => {
       const {
         key, value, status, children, newValue,
       } = element;
@@ -38,9 +38,11 @@ const stylish = (json) => {
 
       return ` ${makeSpace(2, depth + 1)} ${key}: ${iter(children, depth + 2)}`;
     });
-    return ['{', ...result, `${makeSpace(2, depth)}}`].join('\n');
+    return ['{', ...elements, `${makeSpace(2, depth)}}`].join('\n');
   };
-  return iter(json, 1);
+  return iter(data, 1);
 };
+
+const stylish = (data) => makeStylishFormat(data);
 
 export default stylish;

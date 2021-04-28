@@ -5,8 +5,9 @@ import { readFileSync } from 'fs';
 import yaml from 'js-yaml';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import gendiff from '../src/gendiff.js';
-import stylish from '../src/stylish.js';
+import buildDiff from '../src/builddiff.js';
+import stylish from '../formatters/stylish.js';
+import plain from '../formatters/plain.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -23,15 +24,19 @@ describe('genDiff', () => {
   it('empty data', () => {
     const expected = ['{', '}'].join('\n');
 
-    expect(stylish(gendiff({}, {}))).toEqual(expected);
+    expect(stylish(buildDiff({}, {}))).toEqual(expected);
   });
 
   it('nested json', () => {
-    const expected = readFile('nested.txt');
-    expect(stylish(gendiff(json1, json2))).toEqual(expected);
+    const expected = readFile('stylish.txt');
+    expect(stylish(buildDiff(json1, json2))).toEqual(expected);
   });
   it('nested yml', () => {
-    const expected = readFile('nested.txt');
-    expect(stylish(gendiff(yml1, yml2))).toEqual(expected);
+    const expected = readFile('stylish.txt');
+    expect(stylish(buildDiff(yml1, yml2))).toEqual(expected);
+  });
+  it('plain json', () => {
+    const expected = readFile('plain.txt');
+    expect(plain(buildDiff(json1, json2))).toEqual(expected);
   });
 });
