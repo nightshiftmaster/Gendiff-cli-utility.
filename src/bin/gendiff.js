@@ -6,11 +6,12 @@ import path from 'path';
 import stylish from '../formatters/stylish.js';
 import plain from '../formatters/plain.js';
 import genDiff from '../formatters/index.js';
-import { parseByType } from '../src/parsers.js';
+import { parseByType } from '../parsers.js';
+import json from '../formatters/json.js';
 
-const formaters = [plain, stylish];
+const formaters = [plain, stylish, json];
 
-const getFilePath = (filename) => path.resolve(process.cwd(), '..', 'files', filename);
+const getFilePath = (filePath) => path.resolve(process.cwd(), '.', filePath);
 
 const readFile = (filename) => readFileSync(getFilePath(filename), 'utf-8');
 program
@@ -21,7 +22,7 @@ program
   .action((filepath1, filepath2) => {
     const file1 = parseByType(readFile(filepath1));
     const file2 = parseByType(readFile(filepath2));
-    const index = formaters.flatMap((n) => n.name).indexOf(program.opts().format);
+    const index = formaters.map((n) => n.name).indexOf(program.opts().format);
     console.log(genDiff(file1, file2, formaters[index]));
   });
 

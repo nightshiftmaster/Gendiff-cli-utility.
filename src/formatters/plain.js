@@ -15,15 +15,15 @@ const makePlainFormat = (data) => {
         key, value, status, children, newValue,
       } = element;
 
-      const pathToKey = makePath(ancestry, key);
+      const path = makePath(ancestry, key);
       if (status === 'added') {
-        return `Property '${pathToKey}' was added with value: ${printValue(value)}`;
+        return `Property '${path}' was added with value: ${printValue(value)}`;
       }
       if (status === 'removed') {
-        return `Property '${pathToKey}' was removed`;
+        return `Property '${path}' was removed`;
       }
       if (status === 'changed') {
-        return `Property '${pathToKey}' was updated. From ${printValue(value)} to ${printValue(newValue)}`;
+        return `Property '${path}' was updated. From ${printValue(value)} to ${printValue(newValue)}`;
       }
       if (status === 'unchanged') {
         return [];
