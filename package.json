@@ -2,14 +2,14 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/nightshiftmaster/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/nightshiftmaster/frontend-project-lvl2/actions)",
-  "main": "gendiff.js",
+  "main": "index.js",
   "type": "module",
   "jest": {
     "testEnvironment": "node",
     "transform": {}
   },
   "bin": {
-    "gendiff": "src/bin/gendiff.js"
+    "gendiff": "src/bin/index.js"
   },
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/.bin/jest"
