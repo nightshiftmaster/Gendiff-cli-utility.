@@ -18,7 +18,7 @@ const json2 = JSON.parse(readFile('file2.json'));
 const yml1 = yaml.load(readFile('file1.yml'));
 const yml2 = yaml.load(readFile('file2.yml'));
 
-describe('formaters test', () => {
+describe('formaters tests', () => {
   it('empty data', () => {
     const expected = ['{', '}'].join('\n');
     expect(stylish(buildDiff({}, {}))).toEqual(expected);
