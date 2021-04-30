@@ -1,4 +1,4 @@
-import buildDiff from '../build-difference.js';
+import buildDiff from '../index.js';
 import stylish from './stylish.js';
 import plain from './plain.js';
 import json from './json.js';

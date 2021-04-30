@@ -4,7 +4,7 @@ import {
 import { readFileSync } from 'fs';
 import yaml from 'js-yaml';
 import path from 'path';
-import buildDiff from '../src/build-difference.js';
+import buildDiff from '../src/index.js';
 import stylish from '../src/formatters/stylish.js';
 import plain from '../src/formatters/plain.js';
 import json from '../src/formatters/json.js';
