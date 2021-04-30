@@ -3,13 +3,8 @@
 import program from 'commander';
 import { readFileSync } from 'fs';
 import path from 'path';
-import stylish from '../formatters/stylish.js';
-import plain from '../formatters/plain.js';
 import genDiff from '../formatters/index.js';
 import { parseByType } from '../parsers.js';
-import json from '../formatters/json.js';
-
-const formaters = [plain, stylish, json];
 
 const getFilePath = (filePath) => path.resolve(process.cwd(), '.', filePath);
 
@@ -22,8 +17,7 @@ program
   .action((filepath1, filepath2) => {
     const file1 = parseByType(readFile(filepath1));
     const file2 = parseByType(readFile(filepath2));
-    const index = formaters.map((n) => n.name).indexOf(program.opts().format);
-    console.log(genDiff(file1, file2, formaters[index]));
+    console.log(genDiff(file1, file2, program.opts().format));
   });
 
 program.parse(process.argv);
