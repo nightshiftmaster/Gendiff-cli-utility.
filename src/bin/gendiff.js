@@ -4,7 +4,6 @@ import program from 'commander';
 import { readFileSync } from 'fs';
 import path from 'path';
 import genDiff from '../formatters/index.js';
-import { parseByType } from '../parsers.js';
 
 const getFilePath = (filePath) => path.resolve(process.cwd(), '.', filePath);
 
@@ -15,8 +14,8 @@ program
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format [type]', 'output format', 'stylish')
   .action((filepath1, filepath2) => {
-    const file1 = parseByType(readFile(filepath1));
-    const file2 = parseByType(readFile(filepath2));
+    const file1 = readFile(filepath1);
+    const file2 = readFile(filepath2);
     console.log(genDiff(file1, file2, program.opts().format));
   });
 

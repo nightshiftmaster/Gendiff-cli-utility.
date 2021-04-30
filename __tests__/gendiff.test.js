@@ -47,6 +47,6 @@ describe('formaters tests', () => {
   });
   it('formatters test', () => {
     const expected = readFile('stylish.txt');
-    expect(genDiff(json1, json2)).toEqual(expected);
+    expect(genDiff(readFile('file1.yml'), readFile('file2.yml'))).toEqual(expected);
   });
 });
