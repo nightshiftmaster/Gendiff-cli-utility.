@@ -1,11 +1,9 @@
 import yaml from 'js-yaml';
 import path from 'path';
 
-export const parseYml = (file) => yaml.load(file);
-
-export const parseJson = (file) => JSON.parse(file);
-
-export const parseByType = (file) => {
-  const parse = (path.extname(file) === '.json' ? parseJson(file) : parseYml(file));
+const parseByType = (file) => {
+  const parse = (path.extname(file) === '.json' ? JSON.parse(file) : yaml.load(file));
   return parse;
 };
+
+export default parseByType;

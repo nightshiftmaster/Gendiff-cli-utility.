@@ -3,7 +3,7 @@
 import program from 'commander';
 import { readFileSync } from 'fs';
 import path from 'path';
-import genDiff from '../formatters/index.js';
+import genDiff from '../index.js';
 
 const getFilePath = (filePath) => path.resolve(process.cwd(), '.', filePath);
 
