@@ -8,7 +8,6 @@ import buildDiff from '../src/build-difference.js';
 import stylish from '../src/formatters/stylish.js';
 import plain from '../src/formatters/plain.js';
 import json from '../src/formatters/json.js';
-import genDiff from '../index.js';
 
 const getFixturePath = (filename) => path.join(process.cwd(), '__fixtures__', filename);
 
@@ -44,9 +43,5 @@ describe('formaters tests', () => {
   it('json output', () => {
     const expected = JSON.stringify(buildDiff(json1, json2));
     expect(json(buildDiff(json1, json2))).toEqual(expected);
-  });
-  it('formatters test', () => {
-    const expected = readFile('stylish.txt');
-    expect(genDiff(readFile('file1.yml'), readFile('file2.yml'))).toEqual(expected);
   });
 });
