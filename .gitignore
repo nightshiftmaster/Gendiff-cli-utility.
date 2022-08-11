@@ -1,2 +1,7 @@
+#ignore node modules
 node_modules
-node_modules
+dist
+.vscode
+.DS_Store
+__fixtures__
+__tests__
