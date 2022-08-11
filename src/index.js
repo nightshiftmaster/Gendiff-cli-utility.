@@ -8,7 +8,7 @@ const getFilePath = (filePath) => path.resolve(process.cwd(), '.', filePath);
 
 const readFile = (filename) => readFileSync(getFilePath(filename), 'utf-8');
 
-const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
+const genDiff = (filepath1, filepath2, formatName) => {
   const file1 = parseByType(filepath1, readFile);
   const file2 = parseByType(filepath2, readFile);
   const currFormat = selectFormat(formatName);
