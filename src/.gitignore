@@ -1,0 +1,7 @@
+#ignore node mosules
+node_modules
+dist
+.vscode
+.DS_Store
+__fixtures__
+__tests_
