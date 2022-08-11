@@ -1,1 +1,0 @@
-{"buildTargets":["install","install-deps","lint","publish","test","test-coverage"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
