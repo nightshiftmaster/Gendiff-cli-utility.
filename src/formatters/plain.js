@@ -36,4 +36,5 @@ const makePlainFormat = (data) => {
 };
 
 const plain = (data) => makePlainFormat(data);
+
 export default plain;
