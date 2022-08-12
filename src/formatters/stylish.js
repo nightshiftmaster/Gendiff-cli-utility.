@@ -1,4 +1,4 @@
-const makeSpace = (spacesCount = 2, depth) => {
+const makeSpace = (depth, spacesCount = 2) => {
   const indentSize = spacesCount * depth - spacesCount;
   const currentIndent = ' '.repeat(indentSize);
   return currentIndent;
@@ -11,8 +11,8 @@ const stringify = (value, depth) => {
   if (value === null) {
     return 'null';
   }
-  const lines = Object.entries(value).map(([key, values]) => ` ${makeSpace(2, depth + 3)} ${key}: ${stringify(values, depth + 2)}`);
-  return ['{', ...lines, `${makeSpace(2, depth + 2)}}`].join('\n');
+  const lines = Object.entries(value).map(([key, values]) => ` ${makeSpace(depth + 3, 2)} ${key}: ${stringify(values, depth + 2)}`);
+  return ['{', ...lines, `${makeSpace(depth + 2, 2)}}`].join('\n');
 };
 
 const makeStylishFormat = (data) => {
@@ -23,22 +23,22 @@ const makeStylishFormat = (data) => {
       } = element;
 
       if (status === 'added') {
-        return `${makeSpace(2, depth + 1)}+ ${key}: ${stringify(value, depth)}`;
+        return `${makeSpace(depth + 1, 2)}+ ${key}: ${stringify(value, depth)}`;
       }
       if (status === 'removed') {
-        return `${makeSpace(2, depth + 1)}- ${key}: ${stringify(value, depth)}`;
+        return `${makeSpace(depth + 1, 2)}- ${key}: ${stringify(value, depth)}`;
       }
       if (status === 'unchanged') {
-        return `${makeSpace(2, depth + 1)}  ${key}: ${stringify(value, depth)}`;
+        return `${makeSpace(depth + 1, 2)}  ${key}: ${stringify(value, depth)}`;
       }
 
       if (status === 'changed') {
-        return [`${makeSpace(2, depth + 1)}- ${key}: ${stringify(value, depth)}\n${makeSpace(2, depth + 1)}+ ${key}: ${stringify(newValue, depth)}`];
+        return [`${makeSpace(depth + 1, 2)}- ${key}: ${stringify(value, depth)}\n${makeSpace(depth + 1, 2)}+ ${key}: ${stringify(newValue, depth)}`];
       }
 
-      return ` ${makeSpace(2, depth + 1)} ${key}: ${iter(children, depth + 2)}`;
+      return ` ${makeSpace(depth + 1, 2)} ${key}: ${iter(children, depth + 2)}`;
     });
-    return ['{', ...elements, `${makeSpace(2, depth)}}`].join('\n');
+    return ['{', ...elements, `${makeSpace(depth, 2)}}`].join('\n');
   };
   return iter(data, 1);
 };
