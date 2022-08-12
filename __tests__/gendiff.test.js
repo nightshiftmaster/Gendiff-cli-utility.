@@ -4,10 +4,10 @@ import {
 import { readFileSync } from 'fs';
 import yaml from 'js-yaml';
 import path from 'path';
-import buildDiff from '../src/build-difference.js';
-import stylish from '../src/formatters/stylish.js';
-import plain from '../src/formatters/plain.js';
-import json from '../src/formatters/json.js';
+import buildDiff from '../src/build-difference';
+import stylish from '../src/formatters/stylish';
+import plain from '../src/formatters/plain';
+import json from '../src/formatters/json';
 
 const getFixturePath = (filename) => path.join(process.cwd(), '__fixtures__', filename);
 

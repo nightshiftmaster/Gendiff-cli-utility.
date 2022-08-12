@@ -7,15 +7,9 @@ module.exports = {
     'airbnb-base',
   ],
   parserOptions: {
-    ecmaVersion: 2021,
+    ecmaVersion: 'latest',
     sourceType: 'module',
   },
   rules: {
-    'no-console': 'off',
-    'no-underscore-dangle': [2, { allow: ['__filename', '__dirname'] }],
-    'import/extensions': ['error', 'ignorePackages', {
-      js: 'always',
-      mjs: 'always',
-    }],
   },
 };

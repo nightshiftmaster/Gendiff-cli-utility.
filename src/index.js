@@ -1,6 +1,6 @@
-import parseByType from './parsers.js';
-import buildDiff from './build-difference.js';
-import selectFormat from './formatters/index.js';
+import parseByType from './parsers';
+import buildDiff from './build-difference';
+import selectFormat from './formatters/index';
 
 const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   const file1 = parseByType(filepath1);
