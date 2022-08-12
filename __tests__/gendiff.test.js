@@ -25,23 +25,23 @@ describe('formaters tests', () => {
   });
 
   it('nested json', () => {
-    const expected = readFile('stylish.txt');
-    expect(stylish(buildDiff(json1, json2))).toEqual(expected);
+    const expectedStylish = readFile('stylish.txt');
+    expect(stylish(buildDiff(json1, json2))).toEqual(expectedStylish);
   });
   it('nested yml', () => {
-    const expected = readFile('stylish.txt');
-    expect(stylish(buildDiff(yml1, yml2))).toEqual(expected);
+    const expectedStylish2 = readFile('stylish.txt');
+    expect(stylish(buildDiff(yml1, yml2))).toEqual(expectedStylish2);
   });
   it('plain json', () => {
-    const expected = readFile('plain.txt');
-    expect(plain(buildDiff(json1, json2))).toEqual(expected);
+    const expectedPlain = readFile('plain.txt');
+    expect(plain(buildDiff(json1, json2))).toEqual(expectedPlain);
   });
   it('plain yml', () => {
-    const expected = readFile('plain.txt');
-    expect(plain(buildDiff(yml1, yml2))).toEqual(expected);
+    const expectedYml = readFile('plain.txt');
+    expect(plain(buildDiff(yml1, yml2))).toEqual(expectedYml);
   });
   it('json output', () => {
-    const expected = JSON.stringify(buildDiff(json1, json2));
-    expect(json(buildDiff(json1, json2))).toEqual(expected);
+    const expectedJson = JSON.stringify(buildDiff(json1, json2));
+    expect(json(buildDiff(json1, json2))).toEqual(expectedJson);
   });
 });

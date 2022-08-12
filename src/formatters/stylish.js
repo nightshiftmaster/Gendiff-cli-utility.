@@ -17,33 +17,25 @@ const stringify = (value, depth) => {
 
 const makeStylishFormat = (data) => {
   const iter = (tree, depth) => {
-    const elements = tree.flatMap((element) => {
-      const {
-        key, value, status, children, newValue,
-      } = element;
-      let newElement;
+    const elements = tree.flatMap(({
+      key, value, status, children, newValue,
+    }) => {
       switch (status) {
         case 'added':
-          newElement = `${makeSpace(depth + 1, 2)}+ ${key}: ${stringify(value, depth)}`;
-          break;
+          return `${makeSpace(depth + 1, 2)}+ ${key}: ${stringify(value, depth)}`;
 
         case 'removed':
-          newElement = `${makeSpace(depth + 1, 2)}- ${key}: ${stringify(value, depth)}`;
-          break;
+          return `${makeSpace(depth + 1, 2)}- ${key}: ${stringify(value, depth)}`;
 
         case 'unchanged':
-          newElement = `${makeSpace(depth + 1, 2)}  ${key}: ${stringify(value, depth)}`;
-          break;
+          return `${makeSpace(depth + 1, 2)}  ${key}: ${stringify(value, depth)}`;
 
         case 'changed':
-          newElement = [`${makeSpace(depth + 1, 2)}- ${key}: ${stringify(value, depth)}\n${makeSpace(depth + 1, 2)}+ ${key}: ${stringify(newValue, depth)}`];
-          break;
+          return [`${makeSpace(depth + 1, 2)}- ${key}: ${stringify(value, depth)}\n${makeSpace(depth + 1, 2)}+ ${key}: ${stringify(newValue, depth)}`];
 
         default:
-          newElement = ` ${makeSpace(depth + 1, 2)} ${key}: ${iter(children, depth + 2)}`;
-          break;
+          return ` ${makeSpace(depth + 1, 2)} ${key}: ${iter(children, depth + 2)}`;
       }
-      return newElement;
     });
     return ['{', ...elements, `${makeSpace(depth, 2)}}`].join('\n');
   };

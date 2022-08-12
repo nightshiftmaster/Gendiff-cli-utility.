@@ -10,25 +10,24 @@ const printValue = (value) => {
 
 const makePlainFormat = (data) => {
   const iter = (tree, ancestry) => {
-    const elements = tree.flatMap((element) => {
-      const {
-        key, value, status, children, newValue,
-      } = element;
-
+    const elements = tree.flatMap(({
+      key, value, status, children, newValue,
+    }) => {
       const path = makePath(ancestry, key);
-      if (status === 'added') {
-        return `Property '${path}' was added with value: ${printValue(value)}`;
+      switch (status) {
+        case 'added':
+          return `Property '${path}' was added with value: ${printValue(value)}`;
+
+        case 'removed':
+          return `Property '${path}' was removed`;
+
+        case 'changed':
+          return `Property '${path}' was updated. From ${printValue(value)} to ${printValue(newValue)}`;
+        case 'unchanged':
+          return [];
+        default:
+          return `${iter(children, [...ancestry, key])}`;
       }
-      if (status === 'removed') {
-        return `Property '${path}' was removed`;
-      }
-      if (status === 'changed') {
-        return `Property '${path}' was updated. From ${printValue(value)} to ${printValue(newValue)}`;
-      }
-      if (status === 'unchanged') {
-        return [];
-      }
-      return `${iter(children, [...ancestry, key])}`;
     });
     return elements.join('\n');
   };
