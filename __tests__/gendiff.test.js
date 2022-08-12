@@ -8,7 +8,6 @@ import buildDiff from '../src/build-difference.js';
 import stylish from '../src/formatters/stylish.js';
 import plain from '../src/formatters/plain.js';
 import json from '../src/formatters/json.js';
-import parseByType from '../src/parsers.js';
 
 const getFixturePath = (filename) => path.join(process.cwd(), '__fixtures__', filename);
 
@@ -20,7 +19,6 @@ const yml1 = yaml.load(readFile('file1.yml'));
 const yml2 = yaml.load(readFile('file2.yml'));
 
 describe('formaters tests', () => {
- 
   it('empty data', () => {
     const expected = ['{', '}'].join('\n');
     expect(stylish(buildDiff({}, {}))).toEqual(expected);
