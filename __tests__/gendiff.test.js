@@ -20,13 +20,7 @@ const yml1 = yaml.load(readFile('file1.yml'));
 const yml2 = yaml.load(readFile('file2.yml'));
 
 describe('formaters tests', () => {
-  it('parse by type', () => {
-    const expectedJson = json1;
-    const expectedYaml = yml1;
-    expect(parseByType('file1.json', readFile)).toEqual(expectedJson);
-    expect(parseByType('file1.yml', readFile)).toEqual(expectedYaml);
-  });
-
+ 
   it('empty data', () => {
     const expected = ['{', '}'].join('\n');
     expect(stylish(buildDiff({}, {}))).toEqual(expected);

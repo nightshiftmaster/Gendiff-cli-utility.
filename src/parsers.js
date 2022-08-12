@@ -1,9 +1,14 @@
 import yaml from 'js-yaml';
 import path from 'path';
+import { readFileSync } from 'fs';
 
-const parseByType = (filePath, readFileFunction) => {
+const getFilePath = (filePath) => path.resolve(process.cwd(), '.', filePath);
+
+const readFile = (filename) => readFileSync(getFilePath(filename), 'utf-8');
+
+const parseByType = (filePath) => {
   const type = path.extname(filePath).slice(1);
-  const file = readFileFunction(filePath);
+  const file = readFile(filePath);
   const map = {
     json: () => JSON.parse(file),
     yml: () => yaml.load(file),
