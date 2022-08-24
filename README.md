@@ -11,6 +11,11 @@
 "Gendiff" - Cli Utility. Compares two configuration files and shows a difference.
 Accepts Json & Yml input formats.
 
+# Download & Install
+
+<a href="https://asciinema.org/a/qnBMBIzHVkcz1Em16gAxFbvTO" target="_blank"><img src="https://asciinema.org/a/qnBMBIzHVkcz1Em16gAxFbvTO.svg" /></a>
+
+
 ## Output Examples: 
 
 # Stylish
