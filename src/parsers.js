@@ -2,8 +2,8 @@ import yaml from 'js-yaml';
 
 const parseByType = (type) => {
   const parsers = {
-    json: JSON.parse,
-    yml: yaml.load,
+    json: () => JSON.parse,
+    yml: () => yaml.load,
   };
   return parsers[type];
 };
