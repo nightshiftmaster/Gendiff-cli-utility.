@@ -1,5 +1,5 @@
-import path from 'path';
-import { readFileSync } from 'fs';
+// import path from 'path';
+// import { readFileSync } from 'fs';
 import parseByType from './parsers.js';
 import buildDiff from './build-difference.js';
 import selectFormat from './formatters/index.js';
