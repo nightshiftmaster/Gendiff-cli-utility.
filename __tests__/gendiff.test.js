@@ -8,6 +8,7 @@ import buildDiff from '../src/build-difference.js';
 import stylish from '../src/formatters/stylish.js';
 import plain from '../src/formatters/plain.js';
 import json from '../src/formatters/json.js';
+// import { parseFile } from '../src/index.js';
 
 const getFixturePath = (filename) => path.join(process.cwd(), '__fixtures__', filename);
 
