@@ -31,7 +31,7 @@ const makePlainFormat = (data) => {
     });
     return elements.join('\n');
   };
-  return iter(data, []);
+  return `${iter(data, [])}\n`;
 };
 
 const plain = (data) => makePlainFormat(data);

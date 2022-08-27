@@ -19,8 +19,8 @@ const extensions = ['json', 'yml'];
 
 describe('get difference of two files', () => {
   test.each(extensions)('files format', (extention) => {
-    const file1 = `${process.cwd()}/__fixtures__/file1.${extention}`;
-    const file2 = `${process.cwd()}/__fixtures__/file2.${extention}`;
+    const file1 = `${process.cwd()}/__fixtures__/before.${extention}`;
+    const file2 = `${process.cwd()}/__fixtures__/after.${extention}`;
     expect(genDiff(file1, file2, 'stylish')).toEqual(stylishResult);
     expect(genDiff(file1, file2, 'plain')).toEqual(plainResult);
     expect(genDiff(file1, file2, 'json')).toEqual(jsonResult);
