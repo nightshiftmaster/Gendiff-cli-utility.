@@ -10,9 +10,8 @@ const buildDiff = (file1, file2) => {
       return { key, value: file2[key], status: 'added' };
     }
     if (_.isObject(file1[key]) && _.isObject(file2[key])) {
-      const children = buildDiff(file1[key], file2[key]);
       return {
-        key, value: file1[key], status: 'nesed', children,
+        key, value: file1[key], status: 'nesed', children: buildDiff(file1[key], file2[key]),
       };
     }
     if (!_.isEqual(file1[key], file2[key])) {
