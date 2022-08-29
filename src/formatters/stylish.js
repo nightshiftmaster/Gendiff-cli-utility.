@@ -39,9 +39,9 @@ const makeStylishFormat = (data) => {
     });
     return ['{', ...elements, `${makeSpace(depth)}}`].join('\n');
   };
-  return `${iter(data, 1)}\n`;
+  return iter(data, 1);
 };
 
-const stylish = (data) => makeStylishFormat(data);
+const stylish = (data) => `${makeStylishFormat(data)}\n`;
 
 export default stylish;

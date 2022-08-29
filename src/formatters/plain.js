@@ -31,9 +31,9 @@ const makePlainFormat = (data) => {
     });
     return elements.join('\n');
   };
-  return `${iter(data, [])}\n`;
+  return iter(data, []);
 };
 
-const plain = (data) => makePlainFormat(data);
+const plain = (data) => `${makePlainFormat(data)}\n`;
 
 export default plain;
