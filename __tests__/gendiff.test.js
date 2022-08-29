@@ -1,19 +1,13 @@
 import {
-  describe, expect, beforeAll, test,
+  describe, expect, test,
 } from '@jest/globals';
 import { readFileSync } from 'fs';
 import path from 'path';
 import genDiff from '../src/index.js';
 
-let stylishResult;
-let plainResult;
-let jsonResult;
-
-beforeAll(() => {
-  stylishResult = readFileSync(path.join(process.cwd(), '__fixtures__', 'stylish.txt'), 'utf-8');
-  plainResult = readFileSync(path.join(process.cwd(), '__fixtures__', 'plain.txt'), 'utf-8');
-  jsonResult = readFileSync(path.join(process.cwd(), '__fixtures__', 'json.txt'), 'utf-8');
-});
+const stylishResult = readFileSync(path.join(process.cwd(), '__fixtures__', 'stylish.txt'), 'utf-8');
+const plainResult = readFileSync(path.join(process.cwd(), '__fixtures__', 'plain.txt'), 'utf-8');
+const jsonResult = readFileSync(path.join(process.cwd(), '__fixtures__', 'json.txt'), 'utf-8');
 
 const extensions = ['json', 'yml'];
 
