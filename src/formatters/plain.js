@@ -34,6 +34,6 @@ const makePlainFormat = (data) => {
   return iter(data, []);
 };
 
-const plain = (data) => `${makePlainFormat(data)}\n`;
+const plain = (data) => makePlainFormat(data);
 
 export default plain;

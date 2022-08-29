@@ -11,7 +11,7 @@ const stringify = (value, depth) => {
   if (value === null) {
     return 'null';
   }
-  const lines = Object.entries(value).map(([key, values]) => ` ${makeSpace(depth + 3)} ${key}: ${stringify(values, depth + 2)}`);
+  const lines = Object.entries(value).flatMap(([key, values]) => ` ${makeSpace(depth + 3)} ${key}: ${stringify(values, depth + 2)}`);
   return ['{', ...lines, `${makeSpace(depth + 2)}}`].join('\n');
 };
 
@@ -42,6 +42,6 @@ const makeStylishFormat = (data) => {
   return iter(data, 1);
 };
 
-const stylish = (data) => `${makeStylishFormat(data)}\n`;
+const stylish = (data) => makeStylishFormat(data);
 
 export default stylish;
