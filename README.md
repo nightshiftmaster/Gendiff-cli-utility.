@@ -9,9 +9,14 @@
 # Gendiff
 
 "Gendiff" - Cli Utility. Compares two configuration files and shows a difference.
+Difference can be displayed in 3 various formats: Stylish, Plain, Json. Usage examples below
 Accepts Json & Yml input formats.
 
 # Download & Install
+
+1) [Download or Clone package](https://github.com/nightshiftmaster/frontend-project-lvl2.git)
+2) Open package folder
+3) Install - make install
 
 <a href="https://asciinema.org/a/qnBMBIzHVkcz1Em16gAxFbvTO" target="_blank"><img src="https://asciinema.org/a/qnBMBIzHVkcz1Em16gAxFbvTO.svg" /></a>
 

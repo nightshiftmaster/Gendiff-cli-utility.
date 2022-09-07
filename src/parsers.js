@@ -1,6 +1,6 @@
 import yaml from 'js-yaml';
 
-const parseByType = (type) => {
+const getParserByType = (type) => {
   const parsers = {
     json: JSON.parse,
     yml: yaml.load,
@@ -8,4 +8,4 @@ const parseByType = (type) => {
   return parsers[type];
 };
 
-export default parseByType;
+export default getParserByType;

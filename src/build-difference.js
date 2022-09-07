@@ -1,28 +1,28 @@
 import _ from 'lodash';
 
-const buildDiff = (file1, file2) => {
-  const keys = _.sortBy(_.union(_.keys(file1), _.keys(file2)));
-  const compareFiles = keys.flatMap((key) => {
-    if (!_.has(file2, key)) {
-      return { key, value: file1[key], status: 'removed' };
+const buildDiff = (object1, object2) => {
+  const keys = _.sortBy(_.union(_.keys(object1), _.keys(object2)));
+  const diff = keys.flatMap((key) => {
+    if (!_.has(object2, key)) {
+      return { key, value: object1[key], status: 'removed' };
     }
-    if (!_.has(file1, key)) {
-      return { key, value: file2[key], status: 'added' };
+    if (!_.has(object1, key)) {
+      return { key, value: object2[key], status: 'added' };
     }
-    if (_.isObject(file1[key]) && _.isObject(file2[key])) {
+    if (_.isObject(object1[key]) && _.isObject(object2[key])) {
       return {
-        key, value: file1[key], status: 'nesed', children: buildDiff(file1[key], file2[key]),
+        key, value: object1[key], status: 'nesed', children: buildDiff(object1[key], object2[key]),
       };
     }
-    if (!_.isEqual(file1[key], file2[key])) {
+    if (!_.isEqual(object1[key], object2[key])) {
       return {
-        key, value: file1[key], status: 'changed', newValue: file2[key],
+        key, value: object1[key], status: 'changed', newValue: object2[key],
       };
     }
 
-    return { key, value: file1[key], status: 'unchanged' };
+    return { key, value: object1[key], status: 'unchanged' };
   });
-  return compareFiles;
+  return diff;
 };
 
 export default buildDiff;
