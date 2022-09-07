@@ -15,7 +15,7 @@ Accepts Json & Yml input formats.
 # Download & Install
 
 1) [Download or Clone package](https://github.com/nightshiftmaster/frontend-project-lvl2.git)
-2) Open package folder
+2) Open package folder in terminal
 3) Install - make install
 
 ## Output Examples: 
