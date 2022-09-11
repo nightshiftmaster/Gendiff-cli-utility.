@@ -1,10 +1,8 @@
-install: install-deps
+install: 
+	  npm ci
 
 lint:
 	  npx eslint .
-
-install-deps:
-	  npm ci
 
 test:
 	  npm test

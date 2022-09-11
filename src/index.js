@@ -6,9 +6,9 @@ import selectFormat from './formatters/index.js';
 
 const readFile = (fileName) => readFileSync(path.resolve(process.cwd(), '.', fileName), 'utf-8');
 
-const parseFile = (filePath) => {
-  const type = path.extname(filePath).slice(1);
-  const data = readFile(filePath);
+const parseFile = (fileName) => {
+  const type = path.extname(fileName).slice(1);
+  const data = readFile(fileName);
   const parser = getParserByType(type);
   return parser(data);
 };
